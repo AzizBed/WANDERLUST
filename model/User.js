@@ -9,6 +9,18 @@ const userSchema = new mongoose.Schema({
         type: "string",
         required: true,
     },
+    DayOfBirth: {
+        type: "number",
+        required: true,
+    },
+    MonthOfBirth: {
+        type: "string",
+        required: true,
+    },
+    YearOfBirth: {
+        type: "number",
+        required: true,
+    },
     email: {
         type: "string",
         required: true,
@@ -22,6 +34,10 @@ const userSchema = new mongoose.Schema({
         type: Boolean,
         default: false,
     },
+    isHost: {
+        type: Boolean,
+        default: false,
+    },
     isUser: {
         type: Boolean,
         default: true,
@@ -31,6 +47,5 @@ const userSchema = new mongoose.Schema({
         default: Date.now,
     },
 });
-
 
 module.exports = User = mongoose.model("user", userSchema);

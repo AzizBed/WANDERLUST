@@ -9,7 +9,15 @@ exports.register = async (req, res) => {
     const { error } = RegisterValidation(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
-    let { FirstName, LastName, email, password } = req.body;
+    let {
+        LastName,
+        DayOfBirth,
+        MonthOfBirth,
+        YearOfBirth,
+        email,
+        password,FirstName,
+        
+    } = req.body;
 
     // Checking in the user is already in the database
     const emailExist = await User.findOne({ email });
@@ -22,6 +30,9 @@ exports.register = async (req, res) => {
     const newUser = new User({
         FirstName,
         LastName,
+        DayOfBirth,
+        MonthOfBirth,
+        YearOfBirth,
         email,
         password: hashedPassword,
     });
@@ -48,6 +59,8 @@ exports.login = async (req, res) => {
 
     // Create and assign a token
 
-    const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
+    const token = jwt.sign({ user }, process.env.TOKEN_SECRET, {
+        expiresIn: "7d",
+    });
     res.header("auth-token", token).send(token);
 };

@@ -4,8 +4,11 @@ const Joi = require("joi");
 // Register Validation
 const RegisterValidation = (data) => {
     const schema = Joi.object({
-        FirstName : Joi.string().required(),
-        LastName : Joi.string().required(),
+        FirstName: Joi.string().required(),
+        LastName: Joi.string().required(),
+        DayOfBirth: Joi.number().required(),
+        MonthOfBirth: Joi.string().required(),
+        YearOfBirth: Joi.number().required(),
         email: Joi.string().min(6).required().email(),
         password: Joi.string()
             .min(8)
@@ -13,7 +16,7 @@ const RegisterValidation = (data) => {
             .pattern(new RegExp("^[a-zA-Z0-9]{3,30}$")),
         repeat_password: Joi.ref("password"),
     });
-    return  schema.validate(data);
+    return schema.validate(data);
 };
 // const LoginValidation = (data) => {
 //     const schema = Joi.object({

@@ -3,22 +3,28 @@ module.exports = {
     async CreateUser(req, res) {
         try {
             let {
-                Age,
+                Rating,
+                Gender,
                 Country,
                 PhoneNumber,
                 Languages,
+                Education,
                 Occupation,
+                Hobbies,
                 AboutMe,
                 CountriesIvisited,
             } = req.body;
             let {id}= req.params
 
             const newUser = await services.userService.createUser.CreateUser(
-                Age,
+                Rating,
+                Gender,
                 Country,
                 PhoneNumber,
                 Languages,
+                Education,
                 Occupation,
+                Hobbies,
                 AboutMe,
                 CountriesIvisited,
                 id

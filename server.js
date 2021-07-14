@@ -8,12 +8,15 @@ app.use(express.json());
 // Connect to database
 connectDB;
 // Routes Middlewares
+
 // Register or Login User
 app.use("/api/user", require("./routes/user"));
 // Manage user profil
 app.use("/api/profil", require("./routes/api"));
-
-app.use('/api/posts', require('./routes/posts'))
+// Manage POSTS
+app.use("/api/posts", require("./routes/posts"));
+// Manage Hosting
+app.use("/api/host", require("./routes/hosting"));
 
 // Start the server
 app.listen(process.env.PORT, () => {
