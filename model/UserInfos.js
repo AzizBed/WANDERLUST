@@ -17,6 +17,18 @@ const userInfosSchema = new Schema(
         Rating: {
             type: "Number",
         },
+
+
+      //  Reports{
+    //        type:"Number"
+      //  },
+      //PhoneNumber{
+          //type :Number
+      //}
+// FaceBookId{
+    //type:"string"
+//}
+
         DayOfBirth: {
             type: "number",
             required: true,

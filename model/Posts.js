@@ -4,6 +4,9 @@ const Schema = mongoose.Schema;
 const PostSchema = new Schema({
     user: {
         type: Schema.Types.ObjectId,
+
+       // ref:"User"
+       
     },
     firstName: {
         type: "string",
@@ -64,7 +67,13 @@ const PostSchema = new Schema({
                 default: Date.now,
             },
         },
+        //Report{
+            //type:Number
+        //}
     ],
+    //Report{
+//type:Number
+    //}
     date: {
         type: Date,
         default: Date.now,

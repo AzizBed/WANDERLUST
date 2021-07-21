@@ -9,6 +9,10 @@ router.post("/addnewpost/:id", verify, async (req, res) => {
         req.body;
     let { id } = req.params;
     try {
+
+        //if(isUser){
+
+        
         const user = await User.findById(id);
         const newPost = new Posts({
             user: user.id,
@@ -19,7 +23,13 @@ router.post("/addnewpost/:id", verify, async (req, res) => {
             check_out,
             nbreOfGuests,
             description,
+            //PhoneNumber
+        
         });
+         //}
+        //else{
+        //res.status(403).json({status,msg:access denied!})
+        //}
         const post = await newPost.save();
         res.status(201).json({ message: "post was added successfully", post });
     } catch (err) {

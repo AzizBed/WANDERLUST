@@ -10,16 +10,17 @@ exports.register = async (req, res) => {
     if (error) return res.status(400).send(error.details[0].message);
 
     let {
+        FirstName,
         LastName,
         DayOfBirth,
         MonthOfBirth,
         YearOfBirth,
         email,
-        password,FirstName,
+        password,
         
     } = req.body;
 
-    // Checking in the user is already in the database
+    // Checking if the user is already in the database
     const emailExist = await User.findOne({ email });
     if (emailExist) return res.status(400).send("email already exists");
 
