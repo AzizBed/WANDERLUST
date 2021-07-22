@@ -1,7 +1,7 @@
 const userManagementService = require("../../../services/AdminServices/userManagementServices");
 
 module.exports = {
-  async getUserList() {
+  async getUserList(req, res) {
     try {
       const userList =
         await userManagementService.getUserServices.getUserList();
@@ -14,7 +14,7 @@ module.exports = {
     }
   },
 
-  async getUserById() {
+  async getUserById(req, res) {
     try {
       const { id } = req.params;
       const user = await userManagementService.getUserServices.getUserById(id);

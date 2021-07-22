@@ -1,16 +1,11 @@
 //Admin Access
 
-const User = require("../model/User");
-const adminAccess = async (req, res) => {
-  try {
-    const admin = await User.findOne({ isAdmin: req.user.isAdmin });
-    if (admin.isAdmin === false) {
-      return res.status(403).json({ msg: "access denied !" });
-    }
-    res.send("access granted !");
-  } catch {
-    if (err) throw err;
-    return res.send(err);
+module.exports = function (req, res, next) {
+  let isAdmin = req.user.user.isAdmin;
+  if (isAdmin) {
+    //res.status(200).json({ status: true, msg: "access granted !" });
+    next();
+  } else {
+    res.status(403).json({ status: false, msg: "access denied !" });
   }
 };
-module.exports = adminAccess;
